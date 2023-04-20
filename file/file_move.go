@@ -31,7 +31,7 @@ func Copy(from, to string) error {
 		}
 
 		// 读取源文件
-		file, err := os.Open(from)
+		file, err := os.Open(fromFile)
 		if err != nil {
 			return err
 		}
