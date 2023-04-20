@@ -26,7 +26,7 @@ func Copy(from, to string) error {
 		toFile := filepath.Join(to, rel)
 
 		// 创建复制文件目录
-		if err = os.MkdirAll(filepath.Dir(toFile), 0777); err != nil {
+		if err = os.MkdirAll(filepath.Dir(toFile), os.ModePerm); err != nil {
 			return err
 		}
 
@@ -62,7 +62,7 @@ func Copy(from, to string) error {
 		return filepath.WalkDir(from, func(path string, d fs.DirEntry, err error) error {
 			if d.IsDir() {
 				// 创建目录
-				if err = os.MkdirAll(path, 0777); err != nil {
+				if err = os.MkdirAll(path, os.ModePerm); err != nil {
 					return err
 				}
 			} else {
